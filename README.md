@@ -20,6 +20,7 @@ The script now supports explicit phases and resumable autopilot execution.
 ./hunt.sh --target "Roofers in Ohio" --phase intel
 ./hunt.sh --target "Roofers in Ohio" --phase all --resume
 ./hunt.sh --target "Roofers in Ohio" --dry-run
+./hunt.sh --no-prompt --target "Roofers in Ohio" --phase intel
 ```
 
 ### Status Tracking
@@ -30,6 +31,10 @@ Each run writes a phase state file at:
 - override with: `--status-file /path/to/status.json`
 
 Status values are `pending` or `done` per phase based on output file presence.
+
+### Non-interactive mode
+
+Use `--no-prompt` in CI/autopilot contexts to fail fast when `--target` is missing instead of waiting for stdin.
 
 ## Requirements
 

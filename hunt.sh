@@ -12,6 +12,7 @@ Options:
       --resume               Autopilot resume: skip already-complete phases if output exists
       --status-file FILE     Phase status file path (default: <outdir>/.hunt_status.json)
       --dry-run              Print planned commands without running Gemini/Codex
+      --no-prompt            Fail instead of prompting when target is missing
   -h, --help                 Show this help message
 
 Outputs:
@@ -27,6 +28,7 @@ OUTDIR="$(pwd)"
 PHASE="all"
 RESUME=0
 DRY_RUN=0
+NO_PROMPT=0
 STATUS_FILE=""
 
 while [[ $# -gt 0 ]]; do
@@ -55,6 +57,10 @@ while [[ $# -gt 0 ]]; do
       DRY_RUN=1
       shift
       ;;
+    --no-prompt)
+      NO_PROMPT=1
+      shift
+      ;;
     -h|--help)
       usage
       exit 0
@@ -80,6 +86,10 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [[ -z "${TARGET// }" ]]; then
+  if [[ "$NO_PROMPT" -eq 1 ]]; then
+    echo "No target provided. Use --target \"...\" when --no-prompt is set." >&2
+    exit 1
+  fi
   echo "Boss, who are we hunting today? (e.g. Roofers in Ohio)"
   read -r TARGET
 fi
