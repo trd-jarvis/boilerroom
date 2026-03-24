@@ -1,25 +1,12 @@
 {
-  "success": true,
-  "timestamp": "2026-03-24T21:10:37Z",
-  "phase_completed": "Phase 2: Autopilot phased execution with resume/status tracking",
+  "status": "success",
+  "timestamp": "2026-03-24T23:07:57Z",
+  "phase_completed": "Phase 3: non-interactive autopilot guardrails",
+  "commit": "a52749ccef8226bc6c1f5e078aad82cc7c0efad2",
   "tests": [
-    {
-      "command": "bash -n hunt.sh",
-      "result": "pass"
-    },
-    {
-      "command": "./hunt.sh --help",
-      "result": "pass"
-    },
-    {
-      "command": "./hunt.sh --target \"Roofers in Ohio\" --outdir <tmp> --dry-run",
-      "result": "pass (printed all phase dry-run commands)"
-    },
-    {
-      "command": "./hunt.sh --target \"Roofers in Ohio\" --outdir <tmp> --phase all --resume --dry-run",
-      "result": "pass ([resume] skipped intel when prey.txt existed)"
-    }
-  ],
-  "latest_commit": "95d205fbb03862bfafb9f7ee3d3c7aa0c790e566",
-  "repo_url": "https://github.com/trd-jarvis/boilerroom.git"
+    {"command": "bash -n hunt.sh", "result": "pass"},
+    {"command": "./hunt.sh --help", "result": "pass"},
+    {"command": "./hunt.sh --target \"Roofers in Ohio\" --outdir <tmp> --dry-run", "result": "pass"},
+    {"command": "./hunt.sh --no-prompt", "result": "pass (expected failure without target)"}
+  ]
 }
