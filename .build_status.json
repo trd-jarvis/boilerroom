@@ -1,12 +1,31 @@
 {
+  "success": true,
   "status": "success",
-  "timestamp": "2026-03-24T19:45:00Z",
+  "timestamp": "2026-03-25T18:09:23Z",
   "phase_completed": "Phase 4: validation and deployment",
-  "commit": "verified-test-pass",
+  "repo_url": "https://github.com/trd-jarvis/boilerroom.git",
+  "branch": "main",
+  "commit": "cc97fc9673dad7db828604a4c7b2bc967dadda46",
   "tests": [
-    {"command": "bash -n hunt.sh", "result": "pass"},
-    {"command": "./hunt.sh --help", "result": "pass"},
-    {"command": "./hunt.sh --target \"Roofers in Ohio\" --outdir <tmp> --dry-run", "result": "pass"},
-    {"command": "./hunt.sh --no-prompt", "result": "pass"}
+    {
+      "command": "bash -n hunt.sh",
+      "result": "pass",
+      "exit_code": 0
+    },
+    {
+      "command": "./hunt.sh --help",
+      "result": "pass",
+      "exit_code": 0
+    },
+    {
+      "command": "./hunt.sh --target \"Roofers in Ohio\" --outdir <tmp> --dry-run",
+      "result": "pass",
+      "exit_code": 0
+    },
+    {
+      "command": "./hunt.sh --no-prompt",
+      "result": "pass (expected validation failure without --target)",
+      "exit_code": 1
+    }
   ]
 }
